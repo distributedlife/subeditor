@@ -164,6 +164,7 @@ var SubeditorController = function($scope, $http) {
     footReference.forEach(function(foot) {
       if (foot.name === feet) {
         sentence_metre_length = getStressForSentence(sentence).length / foot.pattern.length;
+        return;
       }
     });
 
