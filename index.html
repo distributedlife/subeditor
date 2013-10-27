@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="subeditor.js"></script>
+    <link rel="stylesheet" href="subeditor.css">
+  </head>
+  <body>
+    <h2>Subeditor</h2>
+    <div ng-controller="SubeditorController">
+      <p ng-model="status" class="notready-{{notReady()}}"> {{status}}</p>
+      <div class="input">
+        <textarea ng-model="rawtext" placeholder="It was a dark and stormy night."></textarea>
+      </div>
+      <div class="notes">
+        <p class="paragraph" ng-repeat="paragraph in paragraphs()">
+          <span class="sentence" ng-repeat="sentence in sentences(paragraph)">
+            <span class="block">
+              <span class="feet">{{ feet(sentence) }}</span>
+              <span class="metre bottom"> {{ metre(sentence) }} </span>
+            </span class="block">
+          </span>
+        </p>
+      </div>
+      <div class="breakdown">
+        <p class="paragraph" ng-repeat="paragraph in paragraphs()">
+          <span class="sentence" ng-repeat="sentence in sentences(paragraph)">
+            <span ng-repeat="word in words(sentence)">
+              <span class="block">
+                <span class="word">{{ word }}</span>
+                <span class="stress bottom">{{ stress(word) }}</span>
+              </span class="block">
+            </span>
+          </span>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
